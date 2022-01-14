@@ -69,10 +69,9 @@ def is_ok(url: str) -> Tuple[bool, list[MissingStr], list[BonusPropStr]]:
     return all(prop_status.values()), missing_props, bonus_props
 
 
-try:
-    urls = [sys.argv[1]]
-except IndexError:
-    print("Using hard-coded urls. Otherwise, usage: PROGRAM_NAME blocket_url")
+urls = sys.argv[1:]
+if not urls:
+    print("Using hard-coded urls. Otherwise, usage: PROGRAM_NAME blocket_url [blocket_url...]")  # noqa
     urls = [
         "https://www.blocket.se/annons/vasterbotten/volvo_v60_cross_country_d4_awd_advanced_edt/98396299", # noqa
         "https://www.blocket.se/annons/skaraborg/volvo_v60_cross_country_t5_awd_advanced_edt/98433699",  # noqa
